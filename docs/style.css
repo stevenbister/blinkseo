@@ -5,6 +5,7 @@
   --bg-color-inverse: #fff;
   /* Using em rather than rem to keep padding proportional to the font size*/
   --relative-padding: 0.5em 0.75em;
+  --transition: all 0.2s ease-in;
 }
 
 *,
@@ -80,7 +81,7 @@ input {
 }
 
 .logo {
-  width: 70px;
+  width: 4.375rem;
   background: var(--bg-color-inverse);
   border-radius: 50%;
 }
@@ -90,18 +91,7 @@ input {
   ===
 */
 .header__nav {
-  display: none;
-}
-
-.header__nav--open {
-  background: var(--bg-color);
-  padding: 0.75rem;
   display: flex;
-  flex-flow: column;
-  align-items: center;
-  position: absolute;
-  left: 0;
-  right: 0;
 }
 
 .header__nav ul {
@@ -117,6 +107,11 @@ input {
 
 .header__nav-link a {
   text-decoration: none;
+  transition: var(--transition);
+}
+
+.header__nav-link a:hover {
+  color: lightgrey;
 }
 
 /* Keeps everything nicely inline */
@@ -135,8 +130,8 @@ input {
 }
 
 .nav__toggle--icon {
-  width: 26px;
-  height: 26px;
+  width: 1.625rem;
+  height: 1.625rem;
 }
 
 /* 
@@ -159,8 +154,35 @@ input {
   border-left: solid 1px grey;
 }
 
+.header__search-button:hover {
+  background: lightgrey;
+  transition: var(--transition);
+}
+
 /* Breakpoints */
 @media only screen and (max-width: 959px) {
+  .header__nav {
+    display: flex;
+    padding: 0.75rem;
+    flex-flow: column;
+    background: var(--bg-color);
+    align-items: center;
+    position: absolute;
+    left: 0;
+    right: 0;
+    opacity: 0;
+    visibility: hidden;
+    /* Let's make sure we're not clicking anything by accident */
+    pointer-events: none;
+    transition: var(--transition);
+  }
+
+  .header__nav--open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+
   .header__nav-link:last-child {
     padding-right: 0;
   }
@@ -169,10 +191,6 @@ input {
 @media only screen and (min-width: 960px) {
   .header {
     padding: 0.625rem 1.875rem;
-  }
-
-  .header__nav {
-    display: flex;
   }
 
   .header__nav-link {
