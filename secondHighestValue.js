@@ -15,11 +15,13 @@ const findSecondHighestValue = arr => {
 
   // Step 3.
   const secondLastNumber = sortedAscendingArr.slice(-2, -1);
-  return secondLastNumber;
+  // Step 4.
+  // Pass the array index to output the value rather than the array
+  return secondLastNumber[0];
 };
 
 // Can refactor into a cheeky one liner, although not as immediately readable
-const findSecondHighestValueOneLine = arr => arr.sort((a, b) => a - b).slice(-2, -1);
+const findSecondHighestValueOneLine = arr => arr.sort((a, b) => a - b).slice(-2, -1)[0];
 
 console.log(findSecondHighestValue(numbers));
-// console.log(findSecondHighestValueOneLine(numbers));
+console.log(findSecondHighestValueOneLine(numbers));
