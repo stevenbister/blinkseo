@@ -1,0 +1,44 @@
+<!-- 
+  ? Build a page header using CSS flexbox containing icon, simple text field for a search and a text link. 
+  Logo from: https://logodust.com/
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Header</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap" rel="stylesheet"> 
+  <link rel="stylesheet" href="normalize.css">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <header class="header">
+    <a class="header__logo-link" href="?logo">
+      <img src="penguin.svg" class="logo" alt="Penguin">
+    </a>
+
+    <button class="nav__toggle button" aria-controls="header-nav" aria-expanded="false">
+      <img src="menu.svg" class="nav__toggle--icon" alt="Menu">
+    </button>
+
+    <div id="header-nav" class="header__nav">
+      <nav aria-label="Primary">
+        <ul>
+          <li class="header__nav-link"><a href="?link-1">Link 1</a></li>
+          <li class="header__nav-link"><a href="?link-2">Link 2</a></li>
+          <li class="header__nav-link"><a href="?link-3">Link 3</a></li>
+        </ul>
+      </nav>
+  
+      <form class="header__search">
+        <label class="header__search-label sr-text" for="search">Search</label>
+        <input class="header__search-input" type="search" name="search" id="search" placeholder="e.g. types of penguins"><button class="header__search-button button">Search</button>
+      </form>
+    </div>
+
+  </header>
+
+  <script src="toggleMenu.js"></script>
+</body>
+</html>

@@ -1,0 +1,186 @@
+/* ? Build a page header using CSS flexbox containing icon, simple text field for a search and a text link. */
+
+:root {
+  --bg-color: #1c1b1b;
+  --bg-color-inverse: #fff;
+  /* Using em rather than rem to keep padding proportional to the font size*/
+  --relative-padding: 0.5em 0.75em;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  line-height: 1.5;
+}
+
+/* 
+  Utils
+  =====
+*/
+.sr-text {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.button {
+  border: none;
+  background: transparent;
+  color: var(--bg-color);
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: var(--relative-padding);
+  text-align: center;
+  line-height: 1.1;
+  cursor: pointer;
+}
+
+input {
+  border: none;
+  padding: var(--relative-padding);
+}
+
+/* 
+  Header
+  ======
+*/
+.header {
+  background: var(--bg-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.625rem 0.875rem;
+  /* Explicitly set relative position so we can absolutely set the nav when the icon is toggled */
+  position: relative;
+}
+
+.header > *,
+.header__nav-link a {
+  color: var(--bg-color-inverse);
+}
+
+/* 
+  Logo 
+  ====
+*/
+/* Prevents extra space appearing under the logo */
+.header__logo-link {
+  line-height: 1;
+}
+
+.logo {
+  width: 70px;
+  background: var(--bg-color-inverse);
+  border-radius: 50%;
+}
+
+/* 
+  Nav
+  ===
+*/
+.header__nav {
+  display: none;
+}
+
+.header__nav--open {
+  background: var(--bg-color);
+  padding: 0.75rem;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  position: absolute;
+  left: 0;
+  right: 0;
+}
+
+.header__nav ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.header__nav-link {
+  padding-right: 2rem;
+  padding-bottom: 1rem;
+}
+
+.header__nav-link a {
+  text-decoration: none;
+}
+
+/* Keeps everything nicely inline */
+.header__nav ul,
+.header__search {
+  display: inline-flex;
+}
+
+/* 
+  Nav toggle
+  ========
+*/
+.nav__toggle {
+  display: block;
+  padding: 0;
+}
+
+.nav__toggle--icon {
+  width: 26px;
+  height: 26px;
+}
+
+/* 
+  Search form
+  ===========
+*/
+.header__search {
+  --border-radius: 5px;
+}
+
+.header__search-input {
+  border-top-left-radius: var(--border-radius);
+  border-bottom-left-radius: var(--border-radius);
+}
+
+.header__search-button {
+  background: var(--bg-color-inverse);
+  border-top-right-radius: var(--border-radius);
+  border-bottom-right-radius: var(--border-radius);
+  border-left: solid 1px grey;
+}
+
+/* Breakpoints */
+@media only screen and (max-width: 959px) {
+  .header__nav-link:last-child {
+    padding-right: 0;
+  }
+}
+
+@media only screen and (min-width: 960px) {
+  .header {
+    padding: 0.625rem 1.875rem;
+  }
+
+  .header__nav {
+    display: flex;
+  }
+
+  .header__nav-link {
+    padding: var(--relative-padding);
+    padding-right: 2rem;
+  }
+
+  .nav__toggle {
+    display: none;
+  }
+}
