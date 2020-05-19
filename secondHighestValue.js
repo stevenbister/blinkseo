@@ -30,9 +30,15 @@ const findSecondHighestValue = arr => {
 };
 
 // Can refactor into a cheeky one liner, although not as immediately readable
-const findSecondHighestValueOneLine = arr => arr.sort((a, b) => a - b).slice(-2, -1)[0];
+// Is quite long now so spplit it over a few lines for readability
+const findSecondHighestValueOneLine = arr =>
+  Array.isArray(arr) && arr.length > 1
+    ? arr.sort((a, b) => a - b).slice(-2, -1)[0]
+    : 'The input needs to be an array with at least two values';
 
 console.log(findSecondHighestValue(numbers));
 console.log(findSecondHighestValue(emptyArr));
 console.log(findSecondHighestValue(undefinedVar));
 // console.log(findSecondHighestValueOneLine(numbers));
+// console.log(findSecondHighestValueOneLine(emptyArr));
+// console.log(findSecondHighestValueOneLine(undefinedVar));
