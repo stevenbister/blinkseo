@@ -30,7 +30,7 @@ const findSecondHighestValue = arr => {
 };
 
 // Can refactor into a cheeky one liner, although not as immediately readable
-// Is quite long now so spplit it over a few lines for readability
+// Is quite long now so split it over a few lines for readability
 const findSecondHighestValueOneLine = arr =>
   Array.isArray(arr) && arr.length > 1
     ? arr.sort((a, b) => a - b).slice(-2, -1)[0]
