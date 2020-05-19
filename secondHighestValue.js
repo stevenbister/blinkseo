@@ -3,25 +3,36 @@
 // Then I'll be able to pick the second to last item
 
 const numbers = [1, 2, 3, 40, 4, 5, 10];
+const emptyArr = [];
+const undefinedVar = undefined;
 
 const findSecondHighestValue = arr => {
   // Step 1.
-  // Need to include a compare function with .sort() so that we are comparing numbers instead of strings
-  // Ref. https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort
-  const compareNumbers = (a, b) => a - b;
+  // Check if array exists and that it conatains more than one item,
+  // to prevent returning an undefined value
+  if (Array.isArray(arr) && arr.length > 1) {
+    // Step 2.
+    // Need to include a compare function with .sort() so that we are comparing numbers instead of strings
+    // Ref. https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort
+    const compareNumbers = (a, b) => a - b;
 
-  // Step 2.
-  const sortedAscendingArr = arr.sort(compareNumbers);
+    // Step 3.
+    const sortedAscendingArr = arr.sort(compareNumbers);
 
-  // Step 3.
-  const secondLastNumber = sortedAscendingArr.slice(-2, -1);
-  // Step 4.
-  // Pass the array index to output the value rather than the array
-  return secondLastNumber[0];
+    // Step 4.
+    const secondLastNumber = sortedAscendingArr.slice(-2, -1);
+    // Step 5.
+    // Pass the array index to output the value rather than the array
+    return secondLastNumber[0];
+  }
+
+  return 'The input needs to be an array with at least two values';
 };
 
 // Can refactor into a cheeky one liner, although not as immediately readable
 const findSecondHighestValueOneLine = arr => arr.sort((a, b) => a - b).slice(-2, -1)[0];
 
 console.log(findSecondHighestValue(numbers));
-console.log(findSecondHighestValueOneLine(numbers));
+console.log(findSecondHighestValue(emptyArr));
+console.log(findSecondHighestValue(undefinedVar));
+// console.log(findSecondHighestValueOneLine(numbers));
